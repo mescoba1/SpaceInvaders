@@ -1,5 +1,6 @@
 package com.example.miguel.spaceinvaders;
 
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
@@ -9,10 +10,12 @@ import android.view.SurfaceView;
 
 public class SpaceView extends SurfaceView implements SurfaceHolder.Callback {
 
-    public SpaceView ( Contextcontext) {
-        super (context) ;
-        getHolder().addCallback(this);
+    public SpaceView (Context context) {
+        super(context) ;
+        getHolder().addCallback( this );
         setFocusable(true);
+
+
     }
     SpaceThread st;
 
@@ -23,10 +26,11 @@ public class SpaceView extends SurfaceView implements SurfaceHolder.Callback {
           launch animator thread */
         st = new SpaceThread(this);
         st.start();
+        //initialize game state variables
     }
 
     @Override
-    public void surfaceChaned(SurfaceHolder holder, int format, int width, int height){
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
         //respond to surface changes
     }
 
@@ -41,6 +45,14 @@ public class SpaceView extends SurfaceView implements SurfaceHolder.Callback {
     public boolean onTouchEvent(MotionEvent e){
         //update game state by responding to event
         // touch up-down-move
+    }
+
+    @Override
+    protected void onDraw(Canvas c){
+        c.drawColor(Color.BLACK);
+        Rect dst = new Rect();
+        dst.set(10. 30, 20, 40);
+        c.drawBitmap(mybitmap, null, dst, null);
     }
 }
 
