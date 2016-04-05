@@ -1,3 +1,6 @@
+package com.example.miguel.spaceinvaders;
+
+import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 public class SpaceThread extends Thread {

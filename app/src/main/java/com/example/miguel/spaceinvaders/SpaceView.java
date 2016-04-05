@@ -1,21 +1,30 @@
 package com.example.miguel.spaceinvaders;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.view.MotionEvent;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 /**
  * Created by miguel on 3/30/2016.
+ * Game Engine
  */
 
-public class SpaceView extends SurfaceView implements SurfaceHolder.Callback {
-
+public class SpaceView extends SurfaceView
+        implements  SurfaceHolder.Callback {
+    public Bitmap mybitmap;
+    public  int screenHeight, screenWidth;
     public SpaceView (Context context) {
         super(context) ;
-        getHolder().addCallback( this );
+        getHolder().addCallback(this);
         setFocusable(true);
-
-
+        //initialize game state variables
+        Bitmap mybitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
     }
     SpaceThread st;
 
@@ -26,7 +35,6 @@ public class SpaceView extends SurfaceView implements SurfaceHolder.Callback {
           launch animator thread */
         st = new SpaceThread(this);
         st.start();
-        //initialize game state variables
     }
 
     @Override
@@ -35,6 +43,10 @@ public class SpaceView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+
+    }
+
     public void surfaceDestroyer(SurfaceHolder holder){
         //stops thread by interrupting it
         //checks for interrupt flag
@@ -45,13 +57,14 @@ public class SpaceView extends SurfaceView implements SurfaceHolder.Callback {
     public boolean onTouchEvent(MotionEvent e){
         //update game state by responding to event
         // touch up-down-move
+        return true;
     }
 
     @Override
     protected void onDraw(Canvas c){
         c.drawColor(Color.BLACK);
         Rect dst = new Rect();
-        dst.set(10. 30, 20, 40);
+        dst.set(10, 30, 20, 40);
         c.drawBitmap(mybitmap, null, dst, null);
     }
 }
