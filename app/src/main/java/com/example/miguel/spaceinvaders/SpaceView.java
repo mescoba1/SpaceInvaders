@@ -24,7 +24,7 @@ public class SpaceView extends SurfaceView
         getHolder().addCallback(this);
         setFocusable(true);
         //initialize game state variables
-        Bitmap mybitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+        Bitmap mybitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
     }
     SpaceThread st;
 
