@@ -67,5 +67,12 @@ public class SpaceView extends SurfaceView
         dst.set(10, 30, 20, 40);
         c.drawBitmap(mybitmap, null, dst, null);
     }
+
+    public void draw(Canvas c) {
+        c.drawColor(Color.BLACK);
+        Rect dst = new Rect();
+        dst.set(10, 30, 20, 40);
+        c.drawBitmap(mybitmap, null, dst, null);
+    }
 }
 
